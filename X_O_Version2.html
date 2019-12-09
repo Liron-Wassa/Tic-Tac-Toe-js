@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let BordGame = [["  ","  ","  "],["  ","  ","  "], ["  ","  ","  "]];
+        let player1, player2;
+        let player1Choose, player2Choose;
+        let turn = 1;
+        let IsEmpty;
+        let Location;
+        let Choose;
+        let quit;
+        let Sign;
+        let match;
+
+        player1 = prompt("Enter a name player 1");
+       
+        while (player1 == null || !isNaN(player1))
+        {   
+            alert("Please enter a name player 1");
+            player1 = prompt("Enter a name player 1");
+        }
+
+        player2 = prompt("Enter a name player 2");
+
+        while (player2 == null || !isNaN(player2))
+        {   
+            alert("Please enter a name player 2");
+
+            player2 = prompt("Enter a name player 2");
+        }
+
+        player1Choose = Number(prompt(`${player1} Choose 1 for \"X\" 2 for \"O\"`));
+
+        while (Number.isInteger(player1Choose) == false || (player1Choose < 1 || player1Choose > 2) || isNaN(player1Choose))
+        {
+            alert(`You must select one of these sgins (1 is: "X", 2 is: "O")`);
+            player1Choose = Number(prompt(`${player1} Choose 1 for \"X\" 2 for \"O\"`));
+        }
+
+        if (player1Choose == 1)
+        {
+            player1Choose = "X";
+            player2Choose = "O";
+
+            alert(`${player1} is "${player1Choose}" ${player2} is "${player2Choose}"`);
+        }
+        else if(player1Choose == 2)
+        {
+            player1Choose = "O";
+            player2Choose = "X";
+
+            alert(`${player1} is "${player1Choose}" ${player2} is "${player2Choose}"`);
+        }
+
+        while (true)
+        {
+            if (turn % 2 !== 0)
+            {
+                name = player1;
+            }
+            else if (turn % 2 == 0)
+            {
+                name = player2;
+            }
+
+            Location = prompt(`${name} Choose Location by Index`);
+            if (Location == null)
+            {
+                alert(`${name} are you sure that you want to quit of the game?`)
+                quit = prompt("Press 1 to exit 2 to countinue");
+                    
+                if (quit == 1 && (turn % 2 !== 0))
+                {
+                    alert(`${player2} is the winner`);
+                    break;
+                }
+                else if (quit == 1 && (turn % 2 == 0))
+                {
+                    alert(`${player1} is the winner`);
+                    break;
+                }
+                else if (quit == 2)
+                {
+                    continue;
+                }
+                while ((quit != 1) && (quit !== 2))
+                {
+                    alert(`Undefined input`);
+                    quit = prompt("Press 1 to exit 2 to countinue");
+                        
+                    if (quit == 1)
+                    {
+                        alert(`${player2} is the winner`);
+                        break;
+                    }
+                    else if (quit == 2)
+                    {
+                        break;
+                    }
+                }
+            }
+            else if (isNaN(Location) || Location == "")
+            {
+                alert("Undefined input");
+                continue;
+            }
+            
+            if (quit == 1)
+            {
+                break;
+            }
+            else if (quit !== 1 && quit !== 2)
+            {
+                CheckThePlace();
+                if (IsEmpty)
+                {
+                    turn++;
+                }
+                if (turn > 3)
+                {
+                    Win(BordGame);
+
+                    if (match == 3)
+                    {
+                        if (Sign == player1Choose)
+                        {
+                            alert(`${player1} is the winner`);
+                        }
+                        else
+                        {
+                            alert(`${player2} is the winner`);
+                        }
+
+                        break;
+                    }
+                    else if (turn == 10)
+                    {
+                        alert(`No winner`);
+                        break;
+                    }
+                }
+
+                continue;
+            }
+        }
+
+        function CheckThePlace()
+        {
+            Location.split(" ");
+
+            let column = Location[0];
+            let row = Location[1];
+
+            if (turn % 2 !== 0)
+            {
+                Choose = player1Choose;
+            }
+            else if (turn % 2 == 0)
+            {
+                Choose = player2Choose;
+            }
+
+            if (Location.length != 2)
+            {
+                alert("Expect 2 indexes");
+                return IsEmpty = false;
+            }
+            else
+            {
+                if ((column < 0 || row < 0) || (column > 2 || row > 2) && (column < 10 || row < 10) || (column > 12 || row > 12) && (column < 20 || row < 20) || (column > 22 || row > 22))
+                {
+                    alert("Exepts only indexes: 00, 01, 02, 10, 11, 12, 20, 21, 22");
+                    return IsEmpty = false;
+                }
+                else if ((BordGame[column][row] == "X") || (BordGame[column][row] == "O"))
+                {
+                    alert("The place that you chooce is occupied");
+                    alert(BordGame[0][0] + "  |  " + BordGame[0][1] + "  |  " + BordGame[0][2] + "\n" + "___________" + "\n" + BordGame[1][0] + "  |  " + BordGame[1][1] + "  |  " + BordGame[1][2] + "\n" + "___________" + "\n" + BordGame[2][0] + "  |  " + BordGame[2][1] + "  |  " + BordGame[2][2]);
+                    return IsEmpty = false;
+                }
+                else if ((BordGame[column][row] !== "X") && (BordGame[column][row] !== "O"))
+                {
+                    BordGame[column][row] = Choose;
+                    alert(BordGame[0][0] + "  |  " + BordGame[0][1] + "  |  " + BordGame[0][2] + "\n" + "___________" + "\n" + BordGame[1][0] + "  |  " + BordGame[1][1] + "  |  " + BordGame[1][2] + "\n" + "___________" + "\n" + BordGame[2][0] + "  |  " + BordGame[2][1] + "  |  " + BordGame[2][2]);
+                    return IsEmpty = true;
+                }
+
+            }
+
+        }
+
+        function Win(array2D)
+        {
+
+            for (let i = 0; i < array2D.length; i++)
+            {
+                let index = 1;
+
+                for (let j = 1; j < array2D[i].length; j++)
+                {
+                    Sign = array2D[i][0];
+
+                    if ((array2D[i][j] != Sign) || (array2D[i][j] == "  "))
+                    {
+                        break;
+                    }
+                    else if (j == 2)
+                    {
+                        return match = 3;
+                    }
+                }
+
+                for (let j = 1; j < array2D[i].length; j++)
+                {
+                    Sign = array2D[0][i];
+
+                    if ((array2D[j][i] != Sign) || (array2D[j][i] == "  "))
+                    {
+                        break;
+                    }
+                    else if (j == 2)
+                    {
+                        return match = 3;
+                    }
+                }
+                for (let j = 1; j < array2D[i].length; j++)
+                {
+                    Sign = array2D[0][0];
+
+                    if ((array2D[j][j] != Sign) || (array2D[j][j] == "  "))
+                    {
+                        break;
+                    }
+                    else if (j == 2)
+                    {
+                        return match = 3;
+                    }
+                }
+                for (let j = 1; j >= 0; j--)
+                {
+                    Sign = array2D[0][2];
+
+                    if ((array2D[index][j] != Sign) || (array2D[index][j] == "  "))
+                    {
+                        break;
+                    }
+                    else if (j == 0)
+                    {
+                        return match = 3;
+                    }
+
+                    index++;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
