@@ -1,8 +1,8 @@
 # Introduction
 Tic Tac Toe.
-<br/>
-The game takes place between two players,
-when each player chooses where to place his selection by indexing.
+
+## Status
+The game takes place between two players, when each player chooses where to place his selection by indexing.
 
 ## Technologies
 - Vanilla JavaScript
