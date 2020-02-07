@@ -9,7 +9,7 @@ when each player chooses where to place his selection by indexing.
 
 ## Illustration
 <img src="https://user-images.githubusercontent.com/56726154/74054672-1f529400-49e7-11ea-9e3d-61247ff2ac87.png" width="500"/>
-<img src="https://user-images.githubusercontent.com/56726154/74047765-88cba600-49d9-11ea-9bfc-630079062f8d.png" width="500"/>
+<img src="https://user-images.githubusercontent.com/56726154/74054755-48732480-49e7-11ea-9e94-38bf6ded3189.png" width="500"/>
 
 ## How to use?
 - the palyers must enter their name
