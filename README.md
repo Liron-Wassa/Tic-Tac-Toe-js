@@ -1,13 +1,14 @@
 # Introduction
 Tic Tac Toe.
-the game takes place between two players,
+<br/>
+The game takes place between two players,
 when each player chooses where to place his selection by indexing.
 
 ## Technologies
 - Vanilla JavaScript
 
 ## Illustration
-<img src="https://user-images.githubusercontent.com/56726154/74047765-88cba600-49d9-11ea-9bfc-630079062f8d.png" width="500"/>
+<img src="https://user-images.githubusercontent.com/56726154/74054672-1f529400-49e7-11ea-9e3d-61247ff2ac87.png" width="500"/>
 <img src="https://user-images.githubusercontent.com/56726154/74047765-88cba600-49d9-11ea-9bfc-630079062f8d.png" width="500"/>
 
 ## How to use?
