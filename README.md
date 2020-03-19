@@ -1,5 +1,7 @@
 # Introduction
 Tic Tac Toe.
+<br/>
+Live link: https://liron-wassa.github.io/Tic-Tac-Toe-js/
 
 ## Status
 The game takes place between two players, when each player chooses where to place his selection by indexing.
